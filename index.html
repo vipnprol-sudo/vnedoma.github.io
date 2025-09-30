@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ВнеДома — каталог мест для отдыха</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --primary: #e67e22;
+      --bg: #f9f5f0;
+      --text: #333;
+      --light: #f8f4ee;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920') no-repeat center center;
+      background-size: cover;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      background-color: var(--primary);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .form-section {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      margin: 30px 0;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 40px;
+      color: #7f8c8d;
+      font-size: 14px;
+    }
+
+    .success-message {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ВнеДома</h1>
+  </header>
+
+  <section class="hero">
+    <h2>Добавьте вашу базу отдыха в каталог ВнеДома — бесплатно!</h2>
+    <p>Мы помогаем гостям находить такие классные места, как у вас. Просто заполните анкету — и получайте заявки уже на этой неделе.</p>
+    <a href="#form" class="btn">Добавить моё место</a>
+  </section>
+
+  <div class="container">
+    <section>
+      <h2>Почему это работает?</h2>
+      <p>Люди каждый день ищут места для отдыха за городом — но часто не находят вас, потому что вас нет в одном удобном месте. Мы собираем все такие места в каталог <strong>ВнеДома</strong> и направляем к вам тех, кто готов бронировать.</p>
+    </section>
+
+    <section>
+      <h2>Уже в каталоге</h2>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 200px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+          <h3>Лесная Гавань</h3>
+          <p>Московская обл.</p>
+          <p>База на 15 человек, баня, мангал, Wi-Fi</p>
+        </div>
+        <div style="flex: 1; min-width: 200px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+          <h3>Речной Утёс</h3>
+          <p>Калужская обл.</p>
+          <p>Домики, купель, рыбалка, до реки 200 м</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Что нам нужно от вас?</h2>
+      <ol>
+        <li><strong>Название</strong> — как вы называете своё место</li>
+        <li><strong>Локация</strong> — город, район, адрес, как добраться (можно текстом)</li>
+        <li><strong>Контакты</strong> — телефон и/или мессенджер</li>
+        <li><strong>Описание</strong> — до 500 знаков</li>
+        <li><strong>Услуги</strong> — отметьте, что есть: мангал, баня, Wi-Fi и т.д.</li>
+        <li><strong>Цены</strong> — например: «Аренда на сутки — 5000 ₽»</li>
+        <li><strong>Фотографии</strong> — минимум 3 штуки, дневные, без людей</li>
+      </ol>
+    </section>
+
+    <section id="form" class="form-section">
+      <h2>Добавьте ваше место — бесплатно и за 5 минут</h2>
+      <form id="placeForm">
+        <div class="form-group">
+          <label>Название места</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+          <label>Город / регион</label>
+          <input type="text" name="location" required>
+        </div>
+        <div class="form-group">
+          <label>Адрес или ориентир</label>
+          <input type="text" name="address">
+        </div>
+        <div class="form-group">
+          <label>Как добраться</label>
+          <textarea name="how_to_get" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Контактный телефон</label>
+          <input type="tel" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label>Telegram или WhatsApp (необязательно)</label>
+          <input type="text" name="messenger">
+        </div>
+        <div class="form-group">
+          <label>Описание (до 500 знаков)</label>
+          <textarea name="description" maxlength="500" rows="3"></textarea>
+          <small id="descCount">0 / 500</small>
+        </div>
+        <div class="form-group">
+          <label>Услуги</label>
+          <div class="services">
+            <label><input type="checkbox" name="services" value="man"> Мангал</label>
+            <label><input type="checkbox" name="services" value="banya"> Баня</label>
+            <label><input type="checkbox" name="services" value="wifi"> Wi-Fi</label>
+            <label><input type="checkbox" name="services" value="parking"> Парковка</label>
+            <label><input type="checkbox" name="services" value="kids"> Детская площадка</label>
+            <label><input type="checkbox" name="services" value="pets"> Можно с животными</label>
+            <label><input type="checkbox" name="services" value="hourly"> Доплата за час</label>
+            <label><input type="checkbox" name="services" value="sauna"> Сауна</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Цены (например: "Сутки — 4000 ₽")</label>
+          <textarea name="prices" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Загрузите фотографии (минимум 3)</label>
+          <input type="file" name="photos" multiple accept="image/*" required>
+        </div>
+        <div class="form-group">
+          <label>Дополнительная информация</label>
+          <textarea name="notes" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+          <label><input type="checkbox" name="consent" required> Я согласен на публикацию данных в каталоге ВнеДома</label>
+        </div>
+        <button type="submit" class="btn">Отправить — получить клиентов!</button>
+      </form>
+      <div class="success-message" id="successMessage">
+        Спасибо! Ваше место скоро появится в каталоге. Мы свяжемся, если понадобятся уточнения.
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p>ВнеДома — каталог лучших мест для отдыха за городом</p>
+    <p>Контакт: <a href="https://t.me/vnedoma" target="_blank">Telegram</a> | © 2025 ВнеДома</p>
+  </footer>
+
+  <script>
+    // Счётчик описания
+    const descInput = document.querySelector('textarea[name="description"]');
+    const descCount = document.getElementById('descCount');
+    descInput.addEventListener('input', () => {
+      descCount.textContent = `${descInput.value.length} / 500`;
+    });
+
+    // Отправка формы (заглушка)
+    document.getElementById('placeForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('successMessage').style.display = 'block';
+      this.reset();
+      descCount.textContent = '0 / 500';
+    });
+  </script>
+
+</body>
+</html>
